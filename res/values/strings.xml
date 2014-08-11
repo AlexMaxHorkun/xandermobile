@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XanderMobile</string>
+    <string name="name_edit_hint">Enter your name</string>
+    <string name="terms_radio_button">Agreed to terms</string>
+    <string name="apply_button">Apply</string>
+    <string name="apply_form_success_header">Apply form sent</string>
+</resources>
