@@ -7,11 +7,11 @@
     <EditText android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/name_edit_hint"
-              android:id="@+id/name"/>
+              android:id="@+id/name_edit"/>
     <RadioButton android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:text="@string/terms_radio_button"
-                 android:id="@+id/terms"/>
+                 android:id="@+id/terms_radio"/>
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/apply_button"

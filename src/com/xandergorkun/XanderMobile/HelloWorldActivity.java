@@ -8,10 +8,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 public class HelloWorldActivity extends Activity {
-    public final static String EXTRA_NAME="com.xandergorkun.XanderMobile.APPLY_NAME";
-
-    public final static String EXTRA_APPLY="com.xandergorkun.XanderMobile.APPLY_AGREED";
-
     /**
      * Called when the activity is first created.
      */
@@ -23,10 +19,10 @@ public class HelloWorldActivity extends Activity {
 
     public void sendApplyForm(View view){
         Intent intent=new Intent(this,ApplyFormResponse.class);
-        EditText name=(EditText)view.findViewById(R.id.name);
-        RadioButton agreed=(RadioButton)view.findViewById(R.id.terms);
-        intent.putExtra(EXTRA_NAME,name.getText());
-        intent.putExtra(EXTRA_APPLY,agreed.isChecked());
+        EditText name=(EditText)view.findViewById(R.id.name_edit);
+        RadioButton agreed=(RadioButton)view.findViewById(R.id.terms_radio);
+        intent.putExtra(ApplyFormResponse.EXTRA_NAME, name.getText().toString());
+        intent.putExtra(ApplyFormResponse.EXTRA_APPLY,agreed.isChecked());
         startActivity(intent);
     }
 }
