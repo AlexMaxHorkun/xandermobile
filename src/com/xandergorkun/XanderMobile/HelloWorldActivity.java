@@ -19,8 +19,8 @@ public class HelloWorldActivity extends Activity {
 
     public void sendApplyForm(View view){
         Intent intent=new Intent(this,ApplyFormResponse.class);
-        EditText name=(EditText)view.findViewById(R.id.name_edit);
-        RadioButton agreed=(RadioButton)view.findViewById(R.id.terms_radio);
+        EditText name=(EditText)findViewById(R.id.name_edit);
+        RadioButton agreed=(RadioButton)findViewById(R.id.terms_radio);
         intent.putExtra(ApplyFormResponse.EXTRA_NAME, name.getText().toString());
         intent.putExtra(ApplyFormResponse.EXTRA_APPLY,agreed.isChecked());
         startActivity(intent);
