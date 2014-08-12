@@ -5,4 +5,6 @@
     <string name="terms_radio_button">Agreed to terms</string>
     <string name="apply_button">Apply</string>
     <string name="apply_form_success_header">Apply form sent</string>
+    <string name="name_edit_error">Please enter valid name</string>
+    <string name="agree_edit_error">You must agree to the right terms</string>
 </resources>
