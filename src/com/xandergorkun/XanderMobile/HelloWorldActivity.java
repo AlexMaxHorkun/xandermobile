@@ -3,6 +3,8 @@ package com.xandergorkun.XanderMobile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -41,5 +43,12 @@ public class HelloWorldActivity extends Activity {
         intent.putExtra(ApplyFormResponse.EXTRA_NAME, name.getText().toString());
         intent.putExtra(ApplyFormResponse.EXTRA_APPLY, agreed.isChecked());
         startActivity(intent);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

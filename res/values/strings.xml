@@ -7,4 +7,6 @@
     <string name="apply_form_success_header">Welcome aboard</string>
     <string name="name_edit_error">Please enter valid name</string>
     <string name="agree_edit_error">You must agree to the right terms</string>
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
 </resources>
