@@ -11,7 +11,7 @@
     <TextView android:layout_width="match_parent"
               android:text="@string/name_edit_error"
               android:id="@+id/name_error"
-              android:layout_height="0dp"/>
+              android:layout_height="wrap_content"/>
     <RadioButton android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:text="@string/terms_radio_button"
@@ -19,7 +19,7 @@
     <TextView android:layout_width="match_parent"
               android:text="@string/agree_edit_error"
               android:id="@+id/terms_error"
-              android:layout_height="0dp"/>
+              android:layout_height="wrap_content"/>
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/apply_button"
