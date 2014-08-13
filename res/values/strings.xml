@@ -9,4 +9,5 @@
     <string name="agree_edit_error">You must agree to the right terms</string>
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
+    <string name="clear_data">Clear fields</string>
 </resources>

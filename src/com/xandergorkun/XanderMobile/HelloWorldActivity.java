@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -33,6 +34,17 @@ public class HelloWorldActivity extends Activity {
         inflater.inflate(R.menu.action_bar, menu);
         return super.onCreateOptionsMenu(menu);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.clear_data:
+                clearFormFields();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public void sendApplyForm(View view) {
         Intent intent = new Intent(this, ApplyFormResponse.class);
@@ -42,6 +54,15 @@ public class HelloWorldActivity extends Activity {
         intent.putExtra(ApplyFormResponse.EXTRA_APPLY, agreed.isChecked());
         startActivity(intent);
     }
+
+    public void clearFormFields(){
+        EditText nameWidget=(EditText)findViewById(R.id.name_edit);
+        nameWidget.setText(null);
+        RadioButton agreedWidget=(RadioButton)findViewById(R.id.terms_radio);
+        agreedWidget.setChecked(false);
+    }
+
+
     @Override
     public void onResume(){
         super.onResume();
