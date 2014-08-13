@@ -34,6 +34,7 @@ public class HelloWorldActivity extends Activity {
         inflater.inflate(R.menu.action_bar, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
@@ -55,16 +56,15 @@ public class HelloWorldActivity extends Activity {
         startActivity(intent);
     }
 
-    public void clearFormFields(){
-        EditText nameWidget=(EditText)findViewById(R.id.name_edit);
+    public void clearFormFields() {
+        EditText nameWidget = (EditText) findViewById(R.id.name_edit);
         nameWidget.setText(null);
-        RadioButton agreedWidget=(RadioButton)findViewById(R.id.terms_radio);
+        RadioButton agreedWidget = (RadioButton) findViewById(R.id.terms_radio);
         agreedWidget.setChecked(false);
     }
 
-
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         Intent receivedIntent = getIntent();
         boolean nameError = false;
@@ -80,14 +80,14 @@ public class HelloWorldActivity extends Activity {
             findViewById(R.id.terms_error).setVisibility(View.GONE);
         }
 
-        String name=receivedIntent.getStringExtra(EXTRA_NAME);
-        boolean agreed=receivedIntent.getBooleanExtra(EXTRA_APPLY, false);
-        if(name != null && !name.isEmpty()){
-            EditText nameWidget=(EditText)findViewById(R.id.name_edit);
+        String name = receivedIntent.getStringExtra(EXTRA_NAME);
+        boolean agreed = receivedIntent.getBooleanExtra(EXTRA_APPLY, false);
+        if (name != null && !name.isEmpty()) {
+            EditText nameWidget = (EditText) findViewById(R.id.name_edit);
             nameWidget.setText(name);
         }
-        if(agreed){
-            RadioButton agreedWidget=(RadioButton)findViewById(R.id.terms_radio);
+        if (agreed) {
+            RadioButton agreedWidget = (RadioButton) findViewById(R.id.terms_radio);
             agreedWidget.setChecked(true);
         }
     }

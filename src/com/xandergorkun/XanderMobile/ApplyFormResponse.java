@@ -19,7 +19,7 @@ public class ApplyFormResponse extends Activity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         Intent intent = getIntent();
         String name = intent.getStringExtra(EXTRA_NAME);
