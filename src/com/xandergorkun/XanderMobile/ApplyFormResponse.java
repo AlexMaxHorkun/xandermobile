@@ -15,6 +15,12 @@ public class ApplyFormResponse extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.apply_form_response);
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
         Intent intent = getIntent();
         String name = intent.getStringExtra(EXTRA_NAME);
         boolean agreed = intent.getBooleanExtra(EXTRA_APPLY, false);
@@ -26,6 +32,8 @@ public class ApplyFormResponse extends Activity {
             if (name.isEmpty()) {
                 errorIntent.putExtra(HelloWorldActivity.EXTRA_ERROR_NAME, true);
             }
+            errorIntent.putExtra(HelloWorldActivity.EXTRA_NAME, name);
+            errorIntent.putExtra(HelloWorldActivity.EXTRA_APPLY, agreed);
             startActivity(errorIntent);
         } else {
             TextView userNameWidget = (TextView) findViewById(R.id.user_name);
