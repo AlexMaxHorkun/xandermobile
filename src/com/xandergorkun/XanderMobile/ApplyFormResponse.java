@@ -3,6 +3,7 @@ package com.xandergorkun.XanderMobile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -39,5 +40,12 @@ public class ApplyFormResponse extends Activity {
             TextView userNameWidget = (TextView) findViewById(R.id.user_name);
             userNameWidget.setText(name);
         }
+    }
+
+    public void onContinueButtonClick(View view) {
+        String name = getIntent().getStringExtra(EXTRA_NAME);
+        Intent provideExtraIntent = new Intent(this, ProvideExtraDataActivity.class);
+        provideExtraIntent.putExtra(ProvideExtraDataActivity.EXTRA_NAME, name);
+        startActivity(provideExtraIntent);
     }
 }

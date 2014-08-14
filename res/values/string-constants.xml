@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="helloworld_preferences_name">com.xandergorkun.XanderMobile.HelloWorldActivity.name</string>
+    <string name="helloworld_preferences_agreed">com.xandergorkun.XanderMobile.HelloWorldActivity.agreed</string>
+</resources>
