@@ -21,4 +21,8 @@
     <string name="file_read_error">File read error</string>
     <string name="contact_info_error">Error while reading contact info file</string>
     <string name="ok">OK</string>
+    <string name="new_file_edit_header">Enter new file content</string>
+    <string name="new_file_path_header">Enter file name (will be saved to :path)</string>
+    <string name="file_write_error">Writing file error</string>
+    <string name="new_file_error">Error while writing your new file</string>
 </resources>

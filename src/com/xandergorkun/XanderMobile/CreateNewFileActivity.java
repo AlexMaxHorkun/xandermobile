@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.*;
@@ -13,6 +16,8 @@ public class CreateNewFileActivity extends Activity {
     public static final String EXTRA_NAME = CreateNewFileActivity.class.toString() + ".EXTRA_NAME";
 
     public static final String EXTRA_JUST_REGISTERED = CreateNewFileActivity.class.toString() + ".EXTRA_JUST_REGISTERED";
+
+    public static final String FILES_DIR = Environment.DIRECTORY_DOWNLOADS;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,8 @@ public class CreateNewFileActivity extends Activity {
             findViewById(R.id.contact_info_header).setVisibility(View.INVISIBLE);
             findViewById(R.id.contact_info_read).setVisibility(View.INVISIBLE);
         }
-
+        TextView filePathHeaderWidget = (TextView) findViewById(R.id.new_file_path_header);
+        filePathHeaderWidget.setText(filePathHeaderWidget.getText().toString().replace(":path", FILES_DIR));
     }
 
     public void onResume() {
@@ -59,5 +65,46 @@ public class CreateNewFileActivity extends Activity {
         }
         input.close();
         return info.toString();
+    }
+
+    protected void writeNewFile(String content, String filename) throws IOException {
+        File file = new File(Environment.getExternalStoragePublicDirectory(FILES_DIR), filename);
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(content);
+            writer.flush();
+            writer.close();
+        } else {
+            Log.e("BULLSHIT.ANDROID", "Directory not created");
+            throw new IOException();
+        }
+    }
+
+    public void onCreateButtonClick(View button) {
+        EditText fileContentWidget = (EditText) findViewById(R.id.new_file_edit);
+        EditText filePathWidget = (EditText) findViewById(R.id.new_file_path_edit);
+        String content = fileContentWidget.getText().toString();
+        String path = filePathWidget.getText().toString();
+        boolean error = false;
+        if (!content.isEmpty() && !path.isEmpty()) {
+            try {
+                writeNewFile(content, path);
+            } catch (IOException e) {
+                AlertDialog.Builder fileReadErrorDialog = new AlertDialog.Builder(this);
+                fileReadErrorDialog.setTitle(R.string.file_write_error);
+                fileReadErrorDialog.setMessage(R.string.new_file_error);
+                fileReadErrorDialog.setCancelable(false);
+                fileReadErrorDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                fileReadErrorDialog.create().show();
+                error = true;
+            }
+            if (!error) {
+                finish();
+            }
+        }
     }
 }
