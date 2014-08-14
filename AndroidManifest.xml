@@ -16,5 +16,6 @@
         </activity>
         <activity android:name="com.xandergorkun.XanderMobile.ApplyFormResponse" android:label="Apply Form Response" android:parentActivityName="com.xandergorkun.XanderMobile.HelloWorldActivity"/>
         <activity android:name=".ProvideExtraDataActivity"/>
+        <activity android:name=".CreateNewFileActivity"/>
     </application>
 </manifest>

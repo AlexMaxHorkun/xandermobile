@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/create_external_file_just_registered"
+              android:id="@+id/just_registered_header"
+            />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/create_external_file"
+              android:lines="2"
+            />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/you_contact_info_header"
+              android:textColor="@color/labelColor"
+              android:id="@+id/contact_info_header"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/contact_info_read"
+              android:lines="4"
+            />
+</LinearLayout>

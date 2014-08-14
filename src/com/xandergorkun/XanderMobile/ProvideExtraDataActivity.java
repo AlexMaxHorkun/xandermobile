@@ -9,8 +9,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.charset.Charset;
+
 public class ProvideExtraDataActivity extends Activity {
     public static final String EXTRA_NAME = ProvideExtraDataActivity.class.toString() + ".EXTRA_NAME";
+
+    public static final String CONTACT_INFO_FILENAME = "contacts";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +30,17 @@ public class ProvideExtraDataActivity extends Activity {
     }
 
     protected boolean writeContactInfo(String data) {
-        return false;
+        boolean success = true;
+        File contactFile = new File(getFilesDir(), CONTACT_INFO_FILENAME);
+        try {
+            BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(contactFile));
+            outputStream.write(data.getBytes(Charset.defaultCharset()));
+            outputStream.flush();
+            outputStream.close();
+        } catch (Exception e) {
+            success = false;
+        }
+        return success;
     }
 
     public void onSendClick(View view) {
@@ -33,7 +50,10 @@ public class ProvideExtraDataActivity extends Activity {
         boolean error = false;
         if (!data.isEmpty()) {
             if (writeContactInfo(data)) {
-
+                Intent createExternalIntent = new Intent(this, CreateNewFileActivity.class);
+                createExternalIntent.putExtra(CreateNewFileActivity.EXTRA_NAME, getIntent().getStringExtra(EXTRA_NAME));
+                createExternalIntent.putExtra(CreateNewFileActivity.EXTRA_JUST_REGISTERED, true);
+                startActivity(createExternalIntent);
             } else {
                 errorWidget.setText(R.string.error_write_to_file);
                 error = true;
@@ -42,7 +62,9 @@ public class ProvideExtraDataActivity extends Activity {
             errorWidget.setText(R.string.edit_error_empty);
             error = true;
         }
-        ViewGroup.LayoutParams layoutParams = errorWidget.getLayoutParams();
-        layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        if (error) {
+            ViewGroup.LayoutParams layoutParams = errorWidget.getLayoutParams();
+            layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        }
     }
 }
